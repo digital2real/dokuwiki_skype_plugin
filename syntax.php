@@ -2,6 +2,7 @@
 /*
  * DokuWiki skype plugin
  * 2014 Zahno Silvan
+ * 2018 digital2real
  * Usage:
  *
  * {{skype>username,function}} 
@@ -31,6 +32,9 @@ require_once(DOKU_PLUGIN.'syntax.php');
  * need to inherit from this class
  */
 class syntax_plugin_skype extends DokuWiki_Syntax_Plugin {
+
+
+    private static $rendercount = 0 ;
 
     /**
      * return some info
@@ -128,8 +132,14 @@ class syntax_plugin_skype extends DokuWiki_Syntax_Plugin {
                return true;
            }
 
-           $code = '<script type="text/javascript" src="https://www.skypeassets.com/i/scom/js/skype-uri.js"></script>';
-           $code .= '<div style="display: inline" id="SkypeButton_Call_'.$data.'_1">';
+           $code = '' ;
+
+           // include JS script only once
+           if ( syntax_plugin_skype::$rendercount++ < 1 ){
+               $code .= '<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>';
+           }
+
+           $code .= '<div style="display: inline-block" id="SkypeButton_Call_'.$data.'_1">';
            $code .= '<script type="text/javascript">Skype.ui({';
 
            $code .= '"name": "'.$options['function'].'",';

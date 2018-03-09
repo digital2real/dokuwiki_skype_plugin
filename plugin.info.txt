@@ -1,7 +1,7 @@
 base skype
-author Zahno Silvan
-email zaswiki@gmail.com
-date 2014-06-16
-name skype Plugin
+author Luc Chauvin 
+email luc.chauvin@digital2real.net 
+date 2018-03-09 
+name skype Plugin (fork)
 desc Dokuwiki Plugin to add a skype connect button with different functions
-url http://zawiki.zapto.org/doku.php/tschinz:dw_skype
+url https://github.com/digital2real/dokuwiki_skype_plugin
